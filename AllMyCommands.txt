@@ -1,0 +1,314 @@
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git init
+Reinitialized existing Git repository in C:/Users/samsung/Desktop/readit/.git/
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git add GettingStarted.txt
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git add GitBranching.txt
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git add DistributedGit.txt
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git commit -m "Three files added"
+[master 71e31ee] Three files added
+ 3 files changed, 185 insertions(+)
+ create mode 100644 DistributedGit.txt
+ create mode 100644 GettingStarted.txt
+ create mode 100644 GitBranching.txt
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ ^C
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git rm GitBranching.txt
+rm 'GitBranching.txt'
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git commit -m "A file is deleted"
+[master 7f09570] A file is deleted
+ 1 file changed, 98 deletions(-)
+ delete mode 100644 GitBranching.txt
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git log
+commit 7f095700b04d95e7befe9682f109df1d8675c1bb (HEAD -> master)
+Author: Youssef Anany <youssef_anany@live.co.uk>
+Date:   Mon Feb 12 18:05:01 2018 +0200
+
+    A file is deleted
+
+commit 71e31eeebd85d1c6085ce3d871e97cfc1175b829
+Author: Youssef Anany <youssef_anany@live.co.uk>
+Date:   Mon Feb 12 18:03:08 2018 +0200
+
+    Three files added
+
+commit 49c18517a99854f592bb6bfea78ea6624e318a10
+Author: Youssef Anany <youssef_anany@live.co.uk>
+Date:   Mon Feb 12 17:51:36 2018 +0200
+
+    Initial commit
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git remote add origin https://github.com/YoussefAnany/readit.git
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git push -u origin master
+Counting objects: 10, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (10/10), 8.44 KiB | 785.00 KiB/s, done.
+Total 10 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/YoussefAnany/readit.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git push -u origin master
+Everything up-to-date
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git branch README
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   GitBranching.txt
+
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ touch README.md
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git checkout README
+Switched to branch 'README'
+A       GitBranching.txt
+
+samsung@intel MINGW64 ~/Desktop/readit (README)
+$ git status
+On branch README
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   GitBranching.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        README.md
+
+
+samsung@intel MINGW64 ~/Desktop/readit (README)
+$ git add README.md
+
+samsung@intel MINGW64 ~/Desktop/readit (README)
+$ git checkout master
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git merge README
+Updating 7f09570..295fbfc
+Fast-forward
+ GitBranching.txt | 98 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ README.md        |  0
+ 2 files changed, 98 insertions(+)
+ create mode 100644 GitBranching.txt
+ create mode 100644 README.md
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git push
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 3.51 KiB | 599.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To https://github.com/YoussefAnany/readit.git
+   7f09570..295fbfc  master -> master
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git checkout readme
+Switched to branch 'readme'
+
+samsung@intel MINGW64 ~/Desktop/readit (readme)
+$ git status
+On branch readme
+nothing to commit, working tree clean
+
+samsung@intel MINGW64 ~/Desktop/readit (readme)
+$ git li
+git: 'li' is not a git command. See 'git --help'.
+
+The most similar commands are
+        gui
+        lfs
+        log
+
+samsung@intel MINGW64 ~/Desktop/readit (readme)
+$ git lfs
+git-lfs/2.3.4 (GitHub; windows amd64; go 1.8.3; git d2f6752f)
+git lfs <command> [<args>]
+
+Git LFS is a system for managing and versioning large files in
+association with a Git repository.  Instead of storing the large files
+within the Git repository as blobs, Git LFS stores special "pointer
+files" in the repository, while storing the actual file contents on a
+Git LFS server.  The contents of the large file are downloaded
+automatically when needed, for example when a Git branch containing
+the large file is checked out.
+
+Git LFS works by using a "smudge" filter to look up the large file
+contents based on the pointer file, and a "clean" filter to create a
+new version of the pointer file when the large file's contents change.
+It also uses a pre-push hook to upload the large file contents to
+the Git LFS server whenever a commit containing a new large file
+version is about to be pushed to the corresponding Git server.
+
+Commands
+--------
+
+Like Git, Git LFS commands are separated into high level ("porcelain")
+commands and low level ("plumbing") commands.
+
+High level commands
+--------------------
+
+* git lfs env:
+    Display the Git LFS environment.
+* git lfs checkout:
+    Populate working copy with real content from Git LFS files.
+* git lfs clone:
+    Efficiently clone a Git LFS-enabled repository.
+* git lfs fetch:
+    Download git LFS files from a remote.
+* git lfs fsck:
+    Check GIT LFS files for consistency.
+* git lfs install:
+    Install Git LFS configuration.
+* git lfs lock:
+    Set a file as "locked" on the Git LFS server.
+* git lfs locks:
+    List currently "locked" files from the Git LFS server.
+* git lfs logs:
+    Show errors from the git-lfs command.
+* git lfs ls-files:
+    Show information about Git LFS files in the index and working tree.
+* git lfs migrate:
+    Migrate history to or from git-lfs
+* git lfs pull:
+    Fetch LFS changes from the remote & checkout any required working tree files.
+* git lfs push:
+    Push queued large files to the Git LFS endpoint.
+* git lfs status:
+    Show the status of Git LFS files in the working tree.
+* git lfs track:
+    View or add Git LFS paths to Git attributes.
+* git lfs unlock:
+    Remove "locked" setting for a file on the Git LFS server.
+* git lfs untrack:
+    Remove Git LFS paths from Git Attributes.
+* git lfs update:
+    Update Git hooks for the current Git repository.
+* git lfs version:
+    Report the version number.
+
+Low level commands
+-------------------
+
+* git lfs clean:
+    Git clean filter that converts large files to pointers.
+* git lfs pointer:
+    Build and compare pointers.
+* git lfs pre-push:
+    Git pre-push hook implementation.
+* git lfs smudge:
+    Git smudge filter that converts pointer in blobs to the actual content.
+
+samsung@intel MINGW64 ~/Desktop/readit (readme)
+$ git status
+On branch readme
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+samsung@intel MINGW64 ~/Desktop/readit (readme)
+$ git add README.md
+
+samsung@intel MINGW64 ~/Desktop/readit (readme)
+$ git commit -m "added readme"
+[readme efc5224] added readme
+ 1 file changed, 1 insertion(+)
+
+samsung@intel MINGW64 ~/Desktop/readit (readme)
+$ git checkout README
+Switched to branch 'README'
+
+samsung@intel MINGW64 ~/Desktop/readit (README)
+$ git add README.MD
+
+samsung@intel MINGW64 ~/Desktop/readit (README)
+$  git status
+On branch README
+nothing to commit, working tree clean
+
+samsung@intel MINGW64 ~/Desktop/readit (README)
+$ git push master origin
+error: src refspec origin does not match any.
+error: failed to push some refs to 'master'
+
+samsung@intel MINGW64 ~/Desktop/readit (README)
+$ git push
+fatal: The current branch README has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin README
+
+
+samsung@intel MINGW64 ~/Desktop/readit (README)
+$ git add AllMyCommands.txt
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   AllMyCommands.txt
+
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$ git commit -m "The file all my commands is added"
+[master a8b86e6] The file all my commands is added
+ 1 file changed, 268 insertions(+)
+ create mode 100644 AllMyCommands.txt
+
+samsung@intel MINGW64 ~/Desktop/readit (master)
+$
+
+
